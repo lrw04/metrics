@@ -5,7 +5,7 @@
 using namespace std;
 using ll = long long;
 
-const int P = 1e9, n = 1e9 - 1e4;
+const int P = 1e9 + 7, n = 1e9 - 1e4;
 
 int main() {
   Timer t;
