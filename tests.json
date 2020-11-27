@@ -33,17 +33,34 @@
             "name": "nt-2"
         },
         {
+            "name": "nt-3",
+            "input": "nt-3.in"
+        },
+        {
             "name": "simd-1-n",
             "input": "simd-1.in"
         },
         {
             "name": "simd-1",
             "input": "simd-1.in"
+        },
+        {
+            "name": "fpu-2",
+            "input": "fpu-2.in"
+        },
+        {
+            "name": "alloc-1",
+            "input": "alloc-1.in"
+        },
+        {
+            "name": "alloc-2",
+            "input": "alloc-2.in"
         }
     ],
     "cxxflags": [
         "-O3",
-        "-std=c++17"
+        "-std=c++17",
+        "-Wall"
     ],
     "ldflags": [
         "-lm"

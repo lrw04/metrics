@@ -76,7 +76,7 @@ Result solve(ll tar) {
   return {year, m, d};
 }
 
-const int n = 1e6;
+const int n = 1e7;
 ll qs[n];
 Result rs[n];
 mt19937 rng;
