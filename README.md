@@ -7,6 +7,7 @@ metrics is a benchmark suite for single-threaded performance.
 - Make
 - C++ compiler at `c++` supporting C++17
 - Python 3.7+
+- 4GiB+ RAM for `cache-1`
 
 ## Instructions
 
