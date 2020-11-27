@@ -1,0 +1,54 @@
+{
+    "tests": [
+        {
+            "name": "cache-1",
+            "input": "cache.in"
+        },
+        {
+            "name": "cache-2",
+            "input": "cache.in"
+        },
+        {
+            "name": "nt-1"
+        },
+        {
+            "name": "fpu-1"
+        },
+        {
+            "name": "funccall-1",
+            "input": "funccall-1.in",
+            "cxxflags": [
+                "-O0"
+            ]
+        },
+        {
+            "name": "locals-1-n",
+            "input": "locals-1.in"
+        },
+        {
+            "name": "locals-1",
+            "input": "locals-1.in"
+        },
+        {
+            "name": "nt-2"
+        },
+        {
+            "name": "simd-1-n",
+            "input": "simd-1.in"
+        },
+        {
+            "name": "simd-1",
+            "input": "simd-1.in"
+        }
+    ],
+    "cxxflags": [
+        "-O3",
+        "-std=c++17"
+    ],
+    "ldflags": [
+        "-lm"
+    ],
+    "common": [
+        "timer"
+    ]
+}
