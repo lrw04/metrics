@@ -2,11 +2,11 @@
     "tests": [
         {
             "name": "cache-1",
-            "input": "cache.in"
+            "input": "cache-1.in"
         },
         {
-            "name": "cache-2",
-            "input": "cache.in"
+            "name": "cache-1-n",
+            "input": "cache-1.in"
         },
         {
             "name": "nt-1"
