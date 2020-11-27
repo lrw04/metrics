@@ -6,8 +6,13 @@ def main():
     tests = json.load(open("tests.json"))
     mk.write("CXX = c++\n")
     mk.write(f'CXXFLAGS = {" ".join(tests["cxxflags"])}\n')
-    mk.write(f'LDFLAGS = {" ".join(tests["ldflags"])}\n\n')
-    mk.write("result.csv: curate.py cxx.out os.out")
+    mk.write(f'LDFLAGS = {" ".join(tests["ldflags"])}\n')
+    mk.write('''
+result.tar: result.csv cxx.out os.out
+\ttar cf result.tar result.csv *.out
+
+''')
+    mk.write("result.csv: curate.py")
     for test in tests["tests"]:
         mk.write(" " + test["name"] + ".out")
     mk.write(
@@ -17,7 +22,7 @@ cxx.out:
 \t$(CXX) -v 2> cxx.out
 os.out:
 \tuname -mprsv > os.out
-all: result.csv
+all: result.tar
 
 """
     )
