@@ -7,10 +7,16 @@
 using namespace std;
 
 const int n = 1e6, q = n;
-int a[n], b[n], qx[q], qy[q], ql[q], ans[q], c[3][3];
+int *a, *b, *qx, *qy, *ql, *ans, c[3][3];
 mt19937 rng;
 
 int main() {
+  a = new int[n];
+  b = new int[n];
+  qx = new int[q];
+  qy = new int[q];
+  ql = new int[q];
+  ans = new int[q];
   uint32_t seed;
   cin >> seed;
   rng.seed(seed);
@@ -51,4 +57,10 @@ int main() {
   uint32_t dig = 0;
   for (uint32_t i = 0; i < q; i++) dig ^= (i + 1) * ans[i];
   cout << dig << endl;
+  delete[] a;
+  delete[] b;
+  delete[] qx;
+  delete[] qy;
+  delete[] ql;
+  delete[] ans;
 }

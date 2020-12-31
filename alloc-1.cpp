@@ -71,11 +71,17 @@ uint64_t ST::Node::qsum(int ql, int qr) {
 }
 
 const int n = 5e6, q = n;
-int typ[q], ql[q], qr[q];
-uint64_t val[q], ans[q];
+int *typ, *ql, *qr;
+uint64_t *val, *ans;
 mt19937_64 rng;
 
 int main() {
+  typ = new int[q];
+  ql = new int[q];
+  qr = new int[q];
+  val = new uint64_t[q];
+  ans = new uint64_t[q];
+
   uint64_t seed;
   cin >> seed;
   rng.seed(seed);
@@ -101,4 +107,10 @@ int main() {
   uint64_t dig = 0;
   for (uint64_t i = 0; i < q; i++) dig ^= (i + 1) * ans[i];
   cout << dig << endl;
+
+  delete[] typ;
+  delete[] ql;
+  delete[] qr;
+  delete[] val;
+  delete[] ans;
 }

@@ -77,11 +77,13 @@ Result solve(ll tar) {
 }
 
 const int n = 1e7;
-ll qs[n];
-Result rs[n];
+ll *qs;
+Result *rs;
 mt19937 rng;
 
 int main() {
+  qs = new ll[n];
+  rs = new Result[n];
   uint32_t seed;
   cin >> seed;
   rng.seed(seed);
@@ -96,4 +98,7 @@ int main() {
   uint64_t ans = 0;
   for (int i = 0; i < n; i++) ans ^= rs[i].y * (i + 1) + rs[i].m * 233 + rs[i].d * 923;
   cout << ans << endl;
+
+  delete[] qs;
+  delete[] rs;
 }

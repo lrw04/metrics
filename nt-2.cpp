@@ -6,10 +6,12 @@ using namespace std;
 using ll = long long;
 
 const int n = 5e8, mp = 6e7;
-ll p[mp], m[n];
+ll *p, *m;
 int pc;
 
 int main() {
+  p = new ll[mp];
+  m = new ll[n];
   Timer t;
   t.start();
   for (ll i = 2; i < n; i++) {
@@ -24,5 +26,7 @@ int main() {
   ll ans = 0;
   for (int i = 0; i < pc; i++) ans ^= p[i] * (i + 1);
   cout << ans << endl;
+  delete[] p;
+  delete[] m;
   return 0;
 }

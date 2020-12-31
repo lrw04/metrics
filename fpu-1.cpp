@@ -15,5 +15,4 @@ int main() {
   t.stop();
   cout << t.elapsed_ms() << endl;
   cout << s << endl;
-  return 0;
 }

@@ -7,9 +7,9 @@ using namespace std;
 using ll = long long;
 
 const int n = 27, P = 998'244'353, G = 3;
-ll a[1 << n];
+ll *a;
 mt19937_64 rng;
-int r[1 << n];
+int *r;
 
 ll qpow(ll base, ll exp) {
   exp = (exp + P - 1) % (P - 1);
@@ -23,6 +23,7 @@ ll qpow(ll base, ll exp) {
 }
 
 void ntt(int n, ll *a, int rank) {
+  r[0] = 0;
   for (int i = 1; i < 1 << n; i++) r[i] = r[i >> 1] >> 1 | (i & 1 << (n - 1));
   for (int i = 0; i < 1 << n; i++)
     if (i < r[i]) swap(a[i], a[r[i]]);
@@ -40,6 +41,9 @@ void ntt(int n, ll *a, int rank) {
 }
 
 int main() {
+  a = new ll[1 << n];
+  r = new int[1 << n];
+
   uint64_t seed;
   cin >> seed;
   rng.seed(seed);
@@ -55,4 +59,6 @@ int main() {
   uint64_t ans = 0;
   for (uint64_t i = 0; i < 1 << n; i++) ans ^= (i + 1) * a[i];
   cout << ans << endl;
+  delete[] a;
+  delete[] r;
 }

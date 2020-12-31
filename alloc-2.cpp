@@ -128,10 +128,13 @@ void Splay::write(Node *u, vector<int> &ans) {
 }
 
 const int n = 2e6, m = n;
-int ql[m], qr[m];
+int *ql, *qr;
 mt19937_64 rng;
 
 int main() {
+  ql = new int[m];
+  qr = new int[m];
+
   uint64_t seed;
   cin >> seed;
   rng.seed(seed);
@@ -153,4 +156,6 @@ int main() {
   uint64_t dig = 0;
   for (int i = 1; i <= n; i++) dig ^= i * ans[i];
   cout << dig << endl;
+  delete[] ql;
+  delete[] qr;
 }

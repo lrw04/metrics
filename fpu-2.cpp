@@ -14,9 +14,14 @@ const int n = 27;
 const double V = 1e4;
 cd *a;
 mt19937_64 rng;
-int r[1 << n];
+int *r;
+
+#ifndef M_PI
+#define M_PI (acos(-1))
+#endif
 
 void fft(int n, cd *a, int rank) {
+  r[0] = 0;
   for (int i = 1; i < 1 << n; i++) r[i] = r[i >> 1] >> 1 | (i & 1 << (n - 1));
   for (int i = 0; i < 1 << n; i++)
     if (i < r[i]) swap(a[i], a[r[i]]);
@@ -35,6 +40,8 @@ void fft(int n, cd *a, int rank) {
 
 int main() {
   a = new cd[1 << n];
+  r = new int[1 << n];
+
   uint64_t seed;
   cin >> seed;
   rng.seed(seed);
@@ -50,4 +57,7 @@ int main() {
   double ans = 0;
   for (int i = 0; i < 1 << n; i++) ans += a[i].real() * (i + 2) / (i - 1);
   cout << ans << endl;
+
+  delete[] a;
+  delete[] r;
 }
