@@ -7,11 +7,13 @@ def main():
     mk.write("CXX = c++\n")
     mk.write(f'CXXFLAGS = {" ".join(tests["cxxflags"])}\n')
     mk.write(f'LDFLAGS = {" ".join(tests["ldflags"])}\n')
-    mk.write('''
+    mk.write(
+        """
 result.tar: result.csv cxx.out os.out
 \ttar cf result.tar result.csv *.out
 
-''')
+"""
+    )
     mk.write("result.csv: curate.py")
     for test in tests["tests"]:
         mk.write(" " + test["name"] + ".out")
@@ -44,7 +46,10 @@ all: result.tar
         mk.write(f"{name}: {name}.cpp")
         for src in tests["common"]:
             mk.write(f" {src}.o")
-        mk.write(f"\n\t$(CXX) $(CXXFLAGS) -c {name}.cpp\n")
+        mk.write(f"\n\t$(CXX) $(CXXFLAGS) -c {name}.cpp")
+        if "cxxflags" in test:
+            mk.write(f" {' '.join(test['cxxflags'])}")
+        mk.write("\n")
         mk.write(f"\t$(CXX) $(CXXFLAGS) -o {name} {name}.o")
         for src in tests["common"]:
             mk.write(f" {src}.o")
@@ -52,7 +57,7 @@ all: result.tar
     mk.write("\nclean:\n\trm -f -- result.csv *.o *.out")
     for test in tests["tests"]:
         mk.write(f' {test["name"]}')
-    mk.write('\n.PHONY: clean all\n')
+    mk.write("\n.PHONY: clean all\n")
     mk.close()
 
 
